@@ -63,6 +63,7 @@
             // 
             // ResultsPanel
             // 
+            this.ResultsPanel.AutoSize = true;
             this.ResultsPanel.Location = new System.Drawing.Point(13, 58);
             this.ResultsPanel.Name = "ResultsPanel";
             this.ResultsPanel.Size = new System.Drawing.Size(258, 208);

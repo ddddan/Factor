@@ -24,12 +24,23 @@ namespace Factor
 
         public void DoFactoring(int newValue)
         {
+            // Clear ResultsPanel
+            ResultsPanel.Controls.Clear();
+            
+            // Initialize the FactorData object
             fd.Value = newValue;
+
+            // Calculate the list of factors
             List<int> factors = fd.Factors();
 
-            String message = "# of factors: " + Convert.ToString(factors.Count);
-
-            MessageBox.Show(message, "Factors");
+            // Display the numbers as a series of labels inside ResultsPanel
+            foreach (int f in factors)
+            {
+                Label l = new Label();
+                l.AutoSize = true;
+                l.Text = f.ToString();
+                ResultsPanel.Controls.Add(l);
+            }
 
 
             this.ResultsPanel.Invalidate();
@@ -37,7 +48,13 @@ namespace Factor
 
         private void inputBox_TextChanged(object sender, EventArgs e)
         {
-            origValue = Convert.ToInt32(this.inputBox.Text);
+            // Read in input and convert to string
+            string inputString = this.inputBox.Text;
+            int input;
+            if (Int32.TryParse(inputString, out input))
+            {
+                origValue = input;
+            }
         }
 
 
